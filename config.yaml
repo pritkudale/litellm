@@ -1,9 +1,13 @@
 model_list:
   - model_name: gpt-3.5-turbo
     litellm_params:
-      model: openai/gpt-3.5-turbo                          # Calls openai.chat.completions.create
-      api_key: os.environ/OPENAI_API_KEY
-  - model_name: gpt-3.5-turbo-instruct
+      model: azure/chatgpt-v-2
+      api_base: https://openai-gpt-4-test-v-1.openai.azure.com/
+      api_version: "2023-05-15"
+      api_key: os.environ/AZURE_API_KEY # The `os.environ/` prefix tells litellm to read this from the env.
+  - model_name: bedrock-claude-v1
     litellm_params:
-      model: text-completion-openai/gpt-3.5-turbo-instruct # Calls openai.completions.create
-      api_key: os.environ/OPENAI_API_KEY
+      model: bedrock/anthropic.claude-instant-v1
+      aws_access_key_id: os.environ/aws_access_key_id
+      aws_secret_access_key: os.environ/aws_secret_access_key
+      aws_region_name: os.environ/aws_region_name
